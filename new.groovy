@@ -5,9 +5,9 @@ env.BRANCH_NAME = BRANCH_NAME
 
 def clone() {
    // git ([url: 'git@github.com:'+GIT_ORG+'/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
-    git ([url: 'https://git@github.com:'+GIT_ORG+'/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
+  //  git ([url: 'https://git@github.com:'+GIT_ORG+'/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
   // git branch: 'kk', credentialsId: 'kamalkishorsingh', url: 'https://github.com/kamalkishorsingh/test-nginx.git'
-  // git branch: [[name: BRANCH_NAME]], credentialsId: 'kamalkishorsingh', url: 'https://github.com/'+GIT_ORG+'/'+GIT_REPO+''
+  git branch: 'kk', credentialsId: 'kamalkishorsingh', url: 'https://github.com/kamalkishorsingh/test-nginx.git'
   }
   
 node("master") {
