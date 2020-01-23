@@ -29,11 +29,11 @@ def setSha() {
 //	}
 //}	
 
-def clone()  {
-	stage('Clone sources') {
-        git url: 'https://github.com/+GIT_ORG+"/"+GIT_REPO+".git"'
-    }
-}
+//def clone()  {
+//	stage('Clone sources') {
+//        git url: 'https://github.com/+GIT_ORG+"/"+GIT_REPO+".git"'
+//    }
+//}
     
 
 
@@ -44,10 +44,21 @@ def clone()  {
 //}
 
 
+def clone() {
+ // dir('repo') {
+    git ([url: 'git@github.com:'+GIT_ORG+'/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
+  }
 
+//node("master") {
+//    stage('Clone sources') {
+//        git url: 'https://github.com/kamalkishorsingh/test-nginx.git'
+//    }
+//}
 
 node("master") {
-    stage('Clone sources') {
-        git url: 'https://github.com/kamalkishorsingh/test-nginx.git'
-    }
+	stage('clone'){
+		clone()
+	}
 }
+		
+	
