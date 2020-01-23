@@ -33,5 +33,7 @@ def clone() {
 
 
 node("master") {
+	stage('clone'){
 	clone()
+	}
 }
