@@ -15,7 +15,6 @@ def setVar() {
 }
 
 def setSha() {
-  setVar()
   dir(WORKING_DIR) {
     GIT_SHA = sh(returnStdout: true, script: 'git rev-parse HEAD')
   }
@@ -24,7 +23,6 @@ def setSha() {
 def clone() {
 	stage name: 'clone'
     // github plugin, pipeline: github groovy libraries need to installed for this
-    setVar()
     dir(WORKING_DIR) {
       checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: GITHUB_PR_SOURCE_BRANCH]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'ChangelogToBranch', options: [compareRemote: "origin", compareTarget: 'master']], [$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: GIT_CREDS, url: "https://github.com/"+GIT_ORG+"/"+GIT_REPO+".git"]]]
     }
