@@ -46,7 +46,8 @@ def setSha() {
 
 def clone() {
  // dir('repo') {
-    git ([url: 'git@github.com:'+GIT_ORG+'/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
+//    git ([url: 'git@github.com:'+GIT_ORG+'/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
+    git ([url: 'https://github.com/'+GIT_ORG+'/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
   }
 
 //node("master") {
