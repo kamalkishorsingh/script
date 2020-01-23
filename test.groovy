@@ -37,8 +37,17 @@ def clone()  {
     
 
 
+//node("master") {
+//	stage('clone'){
+//	clone()
+//	}
+//}
+
+
+
+
 node("master") {
-	stage('clone'){
-	clone()
-	}
+    stage('Clone sources') {
+        git url: 'https://github.com/kamalkishorsingh/test-nginx.git'
+    }
 }
