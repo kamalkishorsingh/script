@@ -9,7 +9,7 @@ def BRANCH_NAME = env.BRANCH_NAME
 
 def build_artifact() {
   stage name: 'Build', concurrency: 5
-  dir('repo') {
+  //dir('repo') {
     git ([url: 'https://github.com/kamalkishorsingh/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
   }
 }
