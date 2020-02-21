@@ -12,10 +12,6 @@ def build_artifact() {
   dir('repo') {
     git ([url: 'https://github.com/kamalkishorsingh/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
   }
-  wrap([$class: 'AnsiColorBuildWrapper']) {
-     env.BRANCH_NAME = BRANCH_NAME
-     echo '############ BUILD DONE ###############'+ '\n'
-  }
 }
 
 
