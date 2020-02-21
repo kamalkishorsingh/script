@@ -14,6 +14,16 @@ def build_artifact() {
   }
 }
 
+def deploy() {
+  try {
+    echo service+' deploying on' + ' ' + environment
+      sh '/var/lib/jenkins/flow-groovy/deploy_beta_footer.sh ' + service + ' ' + environment + " " + env.BUILD_NUMBER + ' ' + env.BRANCH_NAME
+    return "deployed"
+  } catch (all) {
+    return "FAILURE"
+  }
+}
+
 
 node("master") {
   build_artifact()
