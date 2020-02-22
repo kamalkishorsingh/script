@@ -20,13 +20,13 @@ def compile() {
   if(language == "java" ) {
 //   println "Hello World!"
    sh label: '', script: 'echo "it is java"'
-    sh "language ${language}"
+      println "language ${language}"
   }
   
   if(language == "python" ) {
 //   println "Hello World!"
    sh label: '', script: 'echo "it is Python"'
-    sh "language ${language}"
+    println "language ${language}"
   }
   
    // sh "'${gradleHome}/bin/gradle' mvn clean install"
