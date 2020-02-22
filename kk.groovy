@@ -29,8 +29,8 @@ def compile() {
      sh '''
      #!/bin/bash
         CLEAN="rm -rf ${WORKSPACE}/repo/${service}.tar"
-        LOCAT="cd ${WORKSPACE}/repo/"
-        EXTRACT="tar -czf ${service}.tar ."
+        LOCAT="cd ${WORKSPACE}"
+        EXTRACT="tar -czf ${service}.tar ${WORKSPACE}/repo/"
     println "language ${language}"
     '''
   }
