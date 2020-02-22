@@ -33,10 +33,17 @@ def compile() {
 
 def deploy() {
     stage name: 'Deploy'
+  if(language == "java" ) {
   println "language ${language}"
   sh "cp -r ${WORKSPACE}/repo/${service}.md /tmp/"
-    sh label: '', script: 'echo "file copy Python"'
-    }
+  sh label: '', script: 'echo "file copy Java"'
+  }
+  if(language == "python" ) {
+  println "language ${language}"
+  sh "cp -r ${WORKSPACE}/repo/${service}.tar /tmp/"
+  sh label: '', script: 'echo "file copy Python"'
+  }
+}
 
    // sh "'${gradleHome}/bin/gradle' mvn clean install"
 //   else {
