@@ -5,7 +5,7 @@ def bool(var) {
 def buildNumber = env.BUILD_NUMBER
 def buildUrl = env.BUILD_URL
 def service = env.JOB_NAME
-def BRANCH_NAME = env.BRANCH_NAME
+//def BRANCH_NAME = env.BRANCH_NAME
 def WORKSPACE = env.WORKSPACE
 
 def build_artifact() {
