@@ -30,7 +30,7 @@ def compile() {
      #!/bin/bash
         CLEAN="rm -rf ${WORKSPACE}/repo/${service}.tar"
         LOCAT="cd ${WORKSPACE}/repo/"
-        EXTRACT="tar -xzf ${TAR_PATH} ."
+        EXTRACT="tar -czf ${service}.tar ."
     println "language ${language}"
   }
 }
