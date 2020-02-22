@@ -34,7 +34,7 @@ def compile() {
 def deploy() {
     stage name: 'Deploy'
     sh label: '', script: 'echo "Python"'
-    sh "cp -r ${WORKSPACE}/repo/*.md /tmp/"
+  sh "cp -r ${WORKSPACE}/repo/${service}.md /tmp/"
     sh label: '', script: 'echo "file copy Python"'
     }
 
