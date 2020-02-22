@@ -32,6 +32,7 @@ def compile() {
         LOCAT="cd ${WORKSPACE}/repo/"
         EXTRACT="tar -czf ${service}.tar ."
     println "language ${language}"
+    '''
   }
 }
  
