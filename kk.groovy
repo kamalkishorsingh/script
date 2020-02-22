@@ -32,6 +32,16 @@ def compile() {
     println "language ${language}"
   }
 }
+
+if(language == "php" ) {
+//   println "Hello World!"
+   sh label: '', script: 'echo "it is Python"'
+   sh "rm -rf ${WORKSPACE}/${service}.tar"
+   // println "${WORKSPACE}"
+   sh "cd ${WORKSPACE}/repo/ ; tar -czf ../${service}.tar ."
+    println "language ${language}"
+  }
+}
  
 
 def deploy() {
@@ -47,6 +57,13 @@ def deploy() {
   sh "cp -r ${WORKSPACE}/${service}.tar /tmp/"
   sh "rm -rf ${WORKSPACE}/${service}.tar"
   sh label: '', script: 'echo "file copy Python"'
+  }
+   if(language == "php" ) {
+  println "language ${language}"
+ // sh "cp -r ${WORKSPACE}/repo/${service}.tar /tmp/"
+  sh "cp -r ${WORKSPACE}/${service}.tar /tmp/"
+  sh "rm -rf ${WORKSPACE}/${service}.tar"
+  sh label: '', script: 'echo "file copy PHP"'
   }
 }
 
