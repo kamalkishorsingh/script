@@ -31,6 +31,9 @@ def compile() {
         CLEAN="rm -rf ${WORKSPACE}/${service}.tar"
         LOCAT="cd ${WORKSPACE}/repo/"
         EXTRACT="tar -czf ../${service}.tar ."
+        ssh ${CLEAN}
+        ssh ${LOCAT}
+        ssh ${EXTRACT}
     println "language ${language}"
     '''
   }
