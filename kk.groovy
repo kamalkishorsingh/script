@@ -33,7 +33,7 @@ def compile() {
 
 def deploy() {
     stage name: 'Deploy'
-    sh label: '', script: 'echo "Python"'
+  println "language ${language}"
   sh "cp -r ${WORKSPACE}/repo/${service}.md /tmp/"
     sh label: '', script: 'echo "file copy Python"'
     }
