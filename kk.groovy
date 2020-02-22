@@ -27,7 +27,7 @@ def compile() {
 //   println "Hello World!"
    sh label: '', script: 'echo "it is Python"'
    sh "rm -rf ${WORKSPACE}/${service}.tar"
-   echo ${WORKSPACE}
+    println "${WORKSPACE}"
    sh "cd ${WORKSPACE}/repo/"
    sh "tar -czf ../${service}.tar ."
     println "language ${language}"
