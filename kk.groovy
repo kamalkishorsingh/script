@@ -19,13 +19,13 @@ def compile() {
   stage name: 'Compile'
   if(language == "java" ) {
 //   println "Hello World!"
-   sh label: '', script: 'echo "it's java"'
+   sh label: '', script: 'echo "it is java"'
     sh "language ${language}"
   }
   
   if(language == "python" ) {
 //   println "Hello World!"
-   sh label: '', script: 'echo "it's Python"'
+   sh label: '', script: 'echo "it is Python"'
     sh "language ${language}"
   }
   
