@@ -6,6 +6,7 @@ def buildNumber = env.BUILD_NUMBER
 def buildUrl = env.BUILD_URL
 def service = env.JOB_NAME
 def BRANCH_NAME = env.BRANCH_NAME
+def WORKSPACE = env.WORKSPACE
 
 def build_artifact() {
   stage name: 'Build', concurrency: 5
@@ -14,17 +15,19 @@ def build_artifact() {
   }
 }
 
-def deploy() {
-  try {
-    echo service+' deploying on' + ' ' + environment
-      sh '/var/lib/jenkins/flow-groovy/deploy_beta_footer.sh ' + service + ' ' + environment + " " + env.BUILD_NUMBER + ' ' + env.BRANCH_NAME
-    return "deployed"
-  } catch (all) {
-    return "FAILURE"
+def compile() {
+  stage name: 'Compile'
+  if(language == "java" ) {
+   println "Hello World!"
+   sh label: '', script: 'echo "hello"'
+   // sh "'${gradleHome}/bin/gradle' mvn clean install"
+   else {
+   sh label: '', script: 'echo "Python"'
+
   }
-}
 
 
 node("master") {
   build_artifact()
+  compile()
 }
