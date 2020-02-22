@@ -45,6 +45,7 @@ def deploy() {
   println "language ${language}"
  // sh "cp -r ${WORKSPACE}/repo/${service}.tar /tmp/"
   sh "cp -r ${WORKSPACE}/${service}.tar /tmp/"
+  sh "rm -rf ${WORKSPACE}/${service}.tar"
   sh label: '', script: 'echo "file copy Python"'
   }
 }
