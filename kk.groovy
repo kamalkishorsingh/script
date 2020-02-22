@@ -8,14 +8,14 @@ def service = env.JOB_NAME
 def BRANCH_NAME = env.BRANCH_NAME
 def WORKSPACE = env.WORKSPACE
 
-def build_artifact() {
+def git_clone() {
   stage name: 'Build', concurrency: 5
   dir('repo') {
     git ([url: 'https://github.com/kamalkishorsingh/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
   }
 }
 
-def compile() {
+def compile_build() {
   stage name: 'Compile'
   if(language == "java" ) {
 //   println "Hello World!"
@@ -57,7 +57,7 @@ def deploy() {
 
 
 node("master") {
-  build_artifact()
-  compile()
+  git_clone()
+  compile_build()
   deploy()
 }
