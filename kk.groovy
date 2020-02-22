@@ -11,7 +11,7 @@ def WORKSPACE = env.WORKSPACE
 def build_artifact() {
   stage name: 'Build', concurrency: 5
   dir('repo') {
-    git ([url: 'https://github.com/kamalkishorsingh/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
+    git ([url: 'https://github.com/kamalkishorsingh/'+GIT_REPO+'.git', branch: env.BRANCH_NAME, changelog: true, poll: true])
   }
 }
 
