@@ -9,14 +9,14 @@ def BRANCH_NAME = env.BRANCH_NAME
 def WORKSPACE = env.WORKSPACE
 
 def git_clone() {
-  stage name: 'Build', concurrency: 5
+  stage name: 'clone', concurrency: 5
   dir('repo') {
     git ([url: 'https://github.com/kamalkishorsingh/'+GIT_REPO+'.git', branch: BRANCH_NAME, changelog: true, poll: true])
   }
 }
 
-def compile_build() {
-  stage name: 'Compile'
+def compile() {
+  stage name: 'compile_build'
   if(language == "java" ) {
 //   println "Hello World!"
    sh label: '', script: 'echo "it is java"'
@@ -59,6 +59,6 @@ def deploy() {
 
 node("master") {
   git_clone()
-  compile_build()
+  compile()
   deploy()
 }
