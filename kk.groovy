@@ -23,7 +23,7 @@ def compile() {
    // sh "'${gradleHome}/bin/gradle' mvn clean install"
    else {
    sh label: '', script: 'echo "Python"'
-
+   }
   }
 
 
