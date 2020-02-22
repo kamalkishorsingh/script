@@ -31,8 +31,7 @@ def compile() {
    sh "cd ${WORKSPACE}/repo/ ; tar -czf ../${service}.tar ."
     println "language ${language}"
   }
-}
-
+  
 if(language == "php" ) {
 //   println "Hello World!"
    sh label: '', script: 'echo "it is Python"'
