@@ -19,11 +19,17 @@ def compile() {
   stage name: 'Compile'
   if(language == "java" ) {
 //   println "Hello World!"
-   sh label: '', script: 'echo "hello"'
+   sh label: '', script: 'echo "java"'
   }
+  
+  if(language == "python" ) {
+//   println "Hello World!"
+   sh label: '', script: 'echo "Python"'
+  }
+  
    // sh "'${gradleHome}/bin/gradle' mvn clean install"
    else {
-   sh label: '', script: 'echo "Python"'
+   sh label: '', script: 'echo "no-language choose"'
    }
   }
 
