@@ -28,9 +28,9 @@ def compile() {
    sh label: '', script: 'echo "it is Python"'
      sh '''
      #!/bin/bash
-        CLEAN="rm -rf ${WORKSPACE}/repo/${service}.tar"
-        LOCAT="cd ${WORKSPACE}"
-        EXTRACT="tar -czf ${service}.tar ${WORKSPACE}/repo/"
+        CLEAN="rm -rf ${WORKSPACE}/${service}.tar"
+        LOCAT="cd ${WORKSPACE}/repo/"
+        EXTRACT="tar -czf ../${service}.tar ."
     println "language ${language}"
     '''
   }
