@@ -29,7 +29,15 @@ def compile() {
     println "language ${language}"
   }
 }
-  
+ 
+
+def deploy() {
+    stage name: 'Deploy'
+    sh label: '', script: 'echo "Python"'
+    sh "cp -r ${WORKSPACE}/repo/*.md /tmp/"
+    sh label: '', script: 'echo "file copy Python"'
+    }
+
    // sh "'${gradleHome}/bin/gradle' mvn clean install"
 //   else {
 //   sh label: '', script: 'echo "no-language choose"'
@@ -40,4 +48,5 @@ def compile() {
 node("master") {
   build_artifact()
   compile()
+  deploy()
 }
