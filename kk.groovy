@@ -26,16 +26,10 @@ def compile() {
   if(language == "python" ) {
 //   println "Hello World!"
    sh label: '', script: 'echo "it is Python"'
-     sh '''
-     #!/bin/bash
-        CLEAN="rm -rf ${WORKSPACE}/${service}.tar"
-        LOCAT="cd ${WORKSPACE}/repo/"
-        EXTRACT="tar -czf ../${service}.tar ."
-        ssh ${CLEAN}
-        ssh ${LOCAT}
-        ssh ${EXTRACT}
+   sh "rm -rf ${WORKSPACE}/${service}.tar"
+   sh "cd ${WORKSPACE}/repo/"
+   sh "tar -czf ../${service}.tar ."
     println "language ${language}"
-    '''
   }
 }
  
