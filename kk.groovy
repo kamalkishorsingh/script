@@ -88,10 +88,9 @@ def estatus(){
             stage("Aborted"){
               print "Deployment not progress"
             }
-
-          }
-	      }
-}
+         }
+     }
+ }
 
 node("master") {
   git_clone()
