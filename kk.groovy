@@ -97,5 +97,5 @@ node("master") {
   git_clone()
   compile()
   estatus()
-  deploy()
+//  deploy()
 }
