@@ -83,7 +83,7 @@ def estatus(){
                    deploy()
                    print "Deployment in-progress"
               }
-          }
+      //    }
 		      else{
             stage("Aborted"){
               print "Deployment not progress"
