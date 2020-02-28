@@ -79,7 +79,7 @@ def estatus(){
 	    //  }
 	     if ( env.RequestedAction == "Approve" ){
              print "Deployment in-Progress"
-                   stage("Artifact"){
+              //     stage("Artifact"){
                    deploy()
                    print "Deployment in-progress"
               }
