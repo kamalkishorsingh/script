@@ -78,7 +78,7 @@ def estatus(){
               parameters: [choice(choices: "Approve", description: 'You want to Approve/Reject validation of Deployment.', name: 'Requested_Action')]
 	    //  }
 	     if ( env.RequestedAction == "Approve" ){
-		     timeout(time: 10, unit: 'MINUTES')
+		     timeout(time: 1, unit: 'MINUTES')
              print "Deployment in-Progress"
               //     stage("Artifact"){
                    deploy()
