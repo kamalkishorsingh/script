@@ -74,8 +74,8 @@ def estatus(){
                 subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) is waiting for input",
                 body: "Please go to ${env.BUILD_URL}. This Approval for Deployment");
               env.RequestedAction = input message: 'Do you want to confirm deployment??', ok: 'Proceed for Deployment',
-              parameters: [choice(choices: "Approve\nReject", description: 'You want to Approve/Reject validation of Deployment.', name: 'Requested_Action')]
-              
+             // parameters: [choice(choices: "Approve\nReject", description: 'You want to Approve/Reject validation of Deployment.', name: 'Requested_Action')]
+              parameters: [choice(choices: "Approve", description: 'You want to Approve/Reject validation of Deployment.', name: 'Requested_Action')]
 	    //  }
 	     if ( env.RequestedAction == "Approve" ){
             print "Deployment in-Progress"
