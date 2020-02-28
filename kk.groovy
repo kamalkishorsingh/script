@@ -76,7 +76,21 @@ def estatus(){
               env.RequestedAction = input message: 'Do you want to confirm deployment??', ok: 'Proceed for Deployment',
               parameters: [choice(choices: "Approve\nReject", description: 'You want to Approve/Reject validation of Deployment.', name: 'Requested_Action')]
               
+	    //  }
+	     if ( env.RequestedAction == "Approve" ){
+            print "Deployment in-Progress"
+		     deploy()
+             stage("Artifact"){
+             print "Deployment in-progress"
             }
+          }
+		      else{
+            stage("Revert"){
+              print "Deployment not progress"
+            }
+
+          }
+	      }
 }
 
 node("master") {
