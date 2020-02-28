@@ -68,29 +68,15 @@ def deploy() {
 }
 
 def estatus(){
-
-	script {
+	      stage name: 'Comfirmation'
+              script {
               mail (to: 'kamal271992@gmail.com',
                 subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) is waiting for input",
-                body: "Please go to ${env.BUILD_URL}. This Approval for Deployment");
-              env.RequestedAction = input message: 'Do you want to confirm deployment on App ??', ok: 'Proceed for FE',
+                body: "Please go to ${env.BUILD_URL}. This Approval for FE");
+              env.RequestedAction = input message: 'Do you want to confirm deployment on FE ??', ok: 'Proceed for FE',
               parameters: [choice(choices: "Approve\nReject", description: 'You want to Approve/Reject validation of FE.', name: 'Requested_Action')]
               
-            }  
-            echo "You have ${env.RequestedAction} to deploy on AZA "
-          }
-
-          if ( env.RequestedAction == "Approve" ){
-            
-             stage("Approve"){
-             print "Deployment in-progress"
-             }
-             }
-          else{
-          stage("No approve"){
-             print "Deployment not progressing"
-             }
-             }
+            }
 }
 
 node("master") {
