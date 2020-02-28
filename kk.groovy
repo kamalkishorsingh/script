@@ -63,6 +63,7 @@ def deploy() {
   sh "cp -r ${WORKSPACE}/${service}.tar /tmp/"
   sh "rm -rf ${WORKSPACE}/${service}.tar"
   sh label: '', script: 'echo "file copy PHP"'
+  sh "rm -rf /tmp/${service}.tar"
   }
 }
 
