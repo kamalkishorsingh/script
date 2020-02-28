@@ -69,7 +69,7 @@ def deploy() {
   }
 }
 
-*//try {
+//try {
 //    timeout(time: 15, unit: 'SECONDS') { // change to a convenient timeout for you
 //        userInput = input(
 //        id: 'Proceed1', message: 'Was this successful?', parameters: [
