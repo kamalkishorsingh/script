@@ -72,7 +72,7 @@ def deploy() {
 /*for multile lined comment
 */
 try {
-    timeout(time: 15, unit: 'SECONDS') { // change to a convenient timeout for you
+    timeout(time: 30, unit: 'SECONDS') { // change to a convenient timeout for you
         userInput = input(
         id: 'Proceed1', message: 'Was this successful?', parameters: [
         [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']
@@ -119,7 +119,7 @@ node("master") {
  //estatus()
 	if (didTimeout) {
 		echo "no input was received before timeout"
-	/*	} else if (userInput == true) {
+	}/*	} else if (userInput == true) {
 		 estatus()
 		echo "this deployment status running successful"
     } */
