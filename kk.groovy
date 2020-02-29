@@ -58,6 +58,7 @@ def deploy() {
   sh "cp -r ${WORKSPACE}/${service}.tar /tmp/"
   sh "rm -rf ${WORKSPACE}/${service}.tar"
   sh label: '', script: 'echo "file copy Python"'
+  sh "rm -rf /tmp/${service}.tar"
   }
    if(language == "php" ) {
   println "language ${language}"
