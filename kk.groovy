@@ -72,7 +72,7 @@ def deploy() {
 
 /*for multile lined comment
 */
-try {
+/*try {
     timeout(time: 30, unit: 'SECONDS') { // change to a convenient timeout for you
         userInput = input(
         id: 'Proceed1', message: 'Was this successful?', parameters: [
@@ -88,7 +88,7 @@ try {
         echo "Aborted by: [${user}]"
    }
 }
-
+*/
 def estatus(){
 	      stage name: 'Comfirmation'
               script {
@@ -117,16 +117,5 @@ def estatus(){
 node("master") {
   git_clone()
   compile()
- //estatus()
-	if (didTimeout) {
-		echo "no input was received before timeout"
-	}/*	} else if (userInput == true) {
-		 estatus()
-		echo "this deployment status running successful"
-    } */
-		if (userInput == true) {
-		 estatus()
-		echo "this deployment status running successful"
-    } 
-//  deploy()
+ estatus()
 }
