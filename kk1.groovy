@@ -70,7 +70,6 @@ def deploy() {
 
 
 def estatus(){
-	options {
       timeout(time: 120, unit: ' SECONDS')
 	      stage name: 'Comfirmation'
               script {
@@ -92,7 +91,6 @@ def estatus(){
             stage("Aborted"){
               print "Deployment not progress"
             }
-		      }
          }
      }
  }
