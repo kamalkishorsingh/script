@@ -70,7 +70,6 @@ def deploy() {
 
 
 def estatus(){
-      timeout(time: 120, unit: ' SECONDS')
 	      stage name: 'Comfirmation'
               script {
               mail (to: 'kamal271992@gmail.com',
@@ -98,5 +97,7 @@ def estatus(){
 node("master") {
   git_clone()
   compile()
+	timeout(time: 20, unit: 'SECONDS') {
  estatus()
+	}
 }
