@@ -95,7 +95,7 @@ def estatus(){
 node("master") {
   git_clone()
   compile()
-  timeout(time: 60, unit: 'SECONDS') {
+  timeout(time: 300, unit: 'SECONDS') {
        estatus()
    }
 }
