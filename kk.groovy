@@ -1,5 +1,5 @@
-//def userInput = true
-//def didTimeout = false
+def userInput = true
+def didTimeout = false
 def bool(var) {
   var.equals("false") ? false : true
 }
@@ -69,22 +69,24 @@ def deploy() {
   }
 }
 
-//try {
-//    timeout(time: 15, unit: 'SECONDS') { // change to a convenient timeout for you
-//        userInput = input(
-//        id: 'Proceed1', message: 'Was this successful?', parameters: [
-//        [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']
-//        ])
-//    }
-//} catch(err) { // timeout reached or input false
-//    def user = err.getCauses()[0].getUser()
-//    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
-//        didTimeout = true
-//    } else {
-//        userInput = false
- //       echo "Aborted by: [${user}]"
- //   }
-//}
+/*for multile lined comment
+*/
+try {
+    timeout(time: 15, unit: 'SECONDS') { // change to a convenient timeout for you
+        userInput = input(
+        id: 'Proceed1', message: 'Was this successful?', parameters: [
+        [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']
+        ])
+    }
+} catch(err) { // timeout reached or input false
+    def user = err.getCauses()[0].getUser()
+    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
+        didTimeout = true
+    } else {
+        userInput = false
+        echo "Aborted by: [${user}]"
+   }
+}
 
 def estatus(){
 	      stage name: 'Comfirmation'
@@ -114,6 +116,16 @@ def estatus(){
 node("master") {
   git_clone()
   compile()
-  estatus()
+ //estatus()
+	if (didTimeout) {
+		echo "no input was received before timeout"
+	/*	} else if (userInput == true) {
+		 estatus()
+		echo "this deployment status running successful"
+    } */
+		if (userInput == true) {
+		 estatus()
+		echo "this deployment status running successful"
+    } 
 //  deploy()
 }
