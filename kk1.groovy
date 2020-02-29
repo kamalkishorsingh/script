@@ -27,7 +27,7 @@ def compile() {
 //   println "Hello World!"
    sh label: '', script: 'echo "it is Python"'
 	  println "${BUILD_NUMBER}"
-   sh "rm -rf ${WORKSPACE}/${service}.tar"
+   sh "rm -rf ${WORKSPACE}/${service}_${BUILD_NUMBER}.tar"
    // println "${WORKSPACE}"
    sh "cd ${WORKSPACE}/repo/ ; tar -czf ../${service}.tar ."
     println "language ${language}"
@@ -58,6 +58,7 @@ def deploy() {
   sh "rm -rf ${WORKSPACE}/${service}.tar"
   sh label: '', script: 'echo "file copy Python"'
   sh "rm -rf /tmp/${service}.tar"
+  sh "rm -rf /tmp/${service}_${BUILD_NUMBER}.tar"
   }
    if(language == "php" ) {
   println "language ${language}"
