@@ -86,6 +86,7 @@ def estatus(){
 		      else{
             stage("Aborted"){
               print "Deployment not progress"
+	      echo "Aborted by: [${user}]"
             }
          }
      }
