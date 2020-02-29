@@ -70,6 +70,8 @@ def deploy() {
 
 
 def estatus(){
+	options {
+      timeout(time: 120, unit: ' SECONDS')
 	      stage name: 'Comfirmation'
               script {
               mail (to: 'kamal271992@gmail.com',
@@ -90,6 +92,7 @@ def estatus(){
             stage("Aborted"){
               print "Deployment not progress"
             }
+		      }
          }
      }
  }
