@@ -1,5 +1,3 @@
-def userInput = true
-def didTimeout = false
 def bool(var) {
   var.equals("false") ? false : true
 }
@@ -70,25 +68,6 @@ def deploy() {
   }
 }
 
-/*for multile lined comment
-*/
-/*try {
-    timeout(time: 30, unit: 'SECONDS') { // change to a convenient timeout for you
-        userInput = input(
-        id: 'Proceed1', message: 'Was this successful?', parameters: [
-        [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']
-        ])
-    }
-} catch(err) { // timeout reached or input false
-    def user = err.getCauses()[0].getUser()
-    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
-        didTimeout = true
-    } else {
-        userInput = false
-        echo "Aborted by: [${user}]"
-   }
-}
-*/
 def estatus(){
 	      stage name: 'Comfirmation'
               script {
@@ -101,11 +80,9 @@ def estatus(){
 	    //  }
 	     if ( env.RequestedAction == "Approve" ){
              print "Deployment in-Progress"
-              //     stage("Artifact"){
                    deploy()
                    print "Deployment in-progress"
               }
-      //    }
 		      else{
             stage("Aborted"){
               print "Deployment not progress"
@@ -117,5 +94,7 @@ def estatus(){
 node("master") {
   git_clone()
   compile()
- estatus()
+  timeout(time: 120, unit: 'SECONDS') {
+       estatus()
+   }
 }
