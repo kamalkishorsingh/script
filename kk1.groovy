@@ -1,5 +1,3 @@
-def userInput = true
-def didTimeout = false
 def bool(var) {
   var.equals("false") ? false : true
 }
@@ -70,16 +68,13 @@ def deploy() {
   }
 }
 
-/*for multile lined comment
-*/
-
 
 def estatus(){
-    script {
+	      stage name: 'Comfirmation'
+              script {
               mail (to: 'kamal271992@gmail.com',
                 subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) is waiting for input",
                 body: "Please go to ${env.BUILD_URL}. This Approval for Deployment");
-              timeout(time: 30, unit: 'SECONDS') {
               env.RequestedAction = input message: 'Do you want to confirm deployment??', ok: 'Proceed for Deployment',
              // parameters: [choice(choices: "Approve\nReject", description: 'You want to Approve/Reject validation of Deployment.', name: 'Requested_Action')]
               parameters: [choice(choices: "Approve", description: 'You want to Approve/Reject validation of Deployment.', name: 'Requested_Action')]
@@ -89,21 +84,18 @@ def estatus(){
               //     stage("Artifact"){
                    deploy()
                    print "Deployment in-progress"
-             }
-		      
-              		      else{
+              }
+      //    }
+		      else{
             stage("Aborted"){
               print "Deployment not progress"
             }
          }
-      }
-   }
+     }
  }
-
 
 node("master") {
   git_clone()
   compile()
- //estatus()
-//  deploy()
+ estatus()
 }
