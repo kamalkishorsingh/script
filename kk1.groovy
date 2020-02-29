@@ -26,7 +26,7 @@ def compile() {
   if(language == "python" ) {
 //   println "Hello World!"
    sh label: '', script: 'echo "it is Python"'
-	  echo ${currentBuild.number}"
+   println "BUILD_NUMBER"
    sh "rm -rf ${WORKSPACE}/${service}.tar"
    // println "${WORKSPACE}"
    sh "cd ${WORKSPACE}/repo/ ; tar -czf ../${service}.tar ."
