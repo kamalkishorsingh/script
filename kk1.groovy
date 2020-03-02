@@ -103,3 +103,6 @@ node("master") {
  estatus()
 	}
 }
+
+/*timeout Ref link - https://support.cloudbees.com/hc/en-us/articles/226554067-Pipeline-How-to-add-an-input-step-with-timeout-that-continues-if-timeout-is-reached-using-a-default-value
+*/	https://stackoverflow.com/questions/38096004/how-to-add-a-timeout-step-to-jenkins-pipeline
